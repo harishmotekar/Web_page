@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn data science, machine learning, and artificial intelligence with practical, mentor-led courses at DataLab.">
+    <title>{% block title %}DataLab — Learn what's next{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" href="{% url 'home' %}" aria-label="DataLab home"><span class="brand-mark">d</span> datalab<span class="brand-dot">.</span></a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="{% url 'courses' %}">Explore courses</a>
+                <a href="{% url 'home' %}#how-it-works">How it works</a>
+                <a href="{% url 'home' %}#about">Our approach</a>
+            </nav>
+            <a class="button button-dark nav-cta" href="{% url 'contact' %}">Get started <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+    <main>
+        {% if messages %}
+            <div class="container messages" aria-live="polite">
+                {% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-main">
+            <div>
+                <a class="brand footer-brand" href="{% url 'home' %}"><span class="brand-mark">d</span> datalab<span class="brand-dot">.</span></a>
+                <p>Make sense of data. Build what’s next.</p>
+            </div>
+            <div class="footer-links">
+                <div><strong>Learn</strong><a href="{% url 'courses' %}">All courses</a><a href="{% url 'home' %}#how-it-works">How it works</a></div>
+                <div><strong>Say hello</strong><a href="{% url 'contact' %}">Contact our team</a><a href="mailto:hello@datalab.example">hello@datalab.example</a></div>
+            </div>
+        </div>
+        <div class="container footer-bottom"><span>© 2025 DataLab Learning</span><span>Curiosity, meet capability.</span></div>
+    </footer>
+</body>
+</html>

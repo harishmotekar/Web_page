@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}DataLab — Learn data science & AI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> THE FUTURE IS A SKILL</div>
+            <h1>Learn the skills<br>that <span>move us forward.</span></h1>
+            <p class="hero-lede">Practical data science and AI education for people ready to turn curiosity into impact.</p>
+            <div class="hero-actions"><a class="button button-dark" href="{% url 'courses' %}">Explore courses <span aria-hidden="true">↗</span></a><a class="text-link" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a></div>
+            <div class="social-proof"><div class="avatar-stack"><span>J</span><span>M</span><span>A</span><span>+</span></div><div><strong>Join 2,400+ learners</strong><small>building their next chapter</small></div></div>
+        </div>
+        <div class="hero-art" aria-label="Abstract data visualization">
+            <div class="art-glow"></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+            <div class="art-core"><span>AI</span><small>×</small><span>YOU</span></div>
+            <div class="float-card card-data"><span class="mini-icon mint-icon">↗</span><div><strong>Data, decoded.</strong><small>Insight starts here</small></div></div>
+            <div class="float-card card-ai"><span class="mini-icon lilac-icon">✳</span><div><strong>Ideas, amplified.</strong><small>Make what's next</small></div></div>
+            <div class="art-caption">A new kind of learning<br>for a new kind of world.</div>
+        </div>
+    </div>
+</section>
+<section class="stats-strip">
+    <div class="container stats-grid"><div><strong>94%</strong><span>feel more confident with data</span></div><div><strong>2.4k<span>+</span></strong><span>curious minds and counting</span></div><div><strong>4.9<span>/5</span></strong><span>average learner rating</span></div><div><strong>Hands-on</strong><span>from your very first lesson</span></div></div>
+</section>
+<section class="section courses-section" id="courses">
+    <div class="container">
+        <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT CHAPTER</div><h2>Big ideas. <span>Real skills.</span></h2></div><a class="text-link" href="{% url 'courses' %}">View all courses <span aria-hidden="true">↗</span></a></div>
+        <div class="course-grid">
+            {% for course in courses %}
+            <article class="course-card">
+                <div class="course-art {{ course.color }}"><span class="course-symbol">{{ course.icon }}</span><span class="course-art-label">{{ course.category }}</span></div>
+                <div class="course-info"><div class="course-meta"><span>{{ course.level }}</span><span>{{ course.duration }}</span></div><h3>{{ course.title }}</h3><p>{{ course.description }}</p><div class="course-card-bottom"><span>{{ course.lessons }} lessons</span><a href="{% url 'course_detail' course.slug %}" aria-label="View {{ course.title }}">Explore <span aria-hidden="true">↗</span></a></div></div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="section dark-section" id="how-it-works">
+    <div class="container learning-grid">
+        <div class="learning-copy"><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> LEARN BY DOING</div><h2>Less lecture.<br><span>More let's go.</span></h2><p>Real skills come from getting your hands dirty. Every course is built around the projects, tools, and thinking you’ll use out in the world.</p><a class="button button-light" href="{% url 'courses' %}">Find your course <span aria-hidden="true">↗</span></a></div>
+        <div class="steps">
+            <div class="step"><span class="step-number">01</span><div><h3>Get curious</h3><p>Start with a question. No fancy background or perfect plan required.</p></div><span class="step-arrow">↗</span></div>
+            <div class="step"><span class="step-number">02</span><div><h3>Build something real</h3><p>Learn by making projects that solve real problems, one step at a time.</p></div><span class="step-arrow">↗</span></div>
+            <div class="step"><span class="step-number">03</span><div><h3>Take it further</h3><p>Leave with a portfolio, practical confidence, and a community behind you.</p></div><span class="step-arrow">↗</span></div>
+        </div>
+    </div>
+</section>
+<section class="section approach-section" id="about">
+    <div class="container approach-grid"><div class="approach-art"><div class="approach-orb"><span>learn<br>forward</span></div><span class="orbit-label label-top">HUMAN FIRST</span><span class="orbit-label label-bottom">BUILT FOR REAL LIFE</span></div><div class="approach-copy"><div class="eyebrow"><span class="eyebrow-line"></span> A BETTER WAY TO LEARN</div><h2>Technology changes.<br><span>People make it matter.</span></h2><p>We believe the best technologists pair deep skills with a sense of purpose. That’s why our courses make room for the human side of data and AI, too.</p><div class="approach-points"><div><span>✳</span><strong>Thoughtful by design</strong><p>Learn to build technology that works for people.</p></div><div><span>↗</span><strong>Support that gets you</strong><p>Small steps, useful feedback, no gatekeeping.</p></div></div></div></div>
+</section>
+<section class="bottom-cta"><div class="container cta-inner"><div><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> YOUR MOVE</div><h2>Wonder what you<br>could do with AI?</h2></div><a class="button button-light" href="{% url 'contact' %}">Let’s figure it out <span aria-hidden="true">↗</span></a><div class="cta-spark" aria-hidden="true">✳</div></div></section>
+{% endblock %}

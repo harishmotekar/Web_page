@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Courses — DataLab{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><div class="eyebrow"><span class="eyebrow-line"></span> THE LEARNING LIBRARY</div><h1>Find your next <span>big thing.</span></h1><p>Practical courses for curious people ready to do more with data and AI.</p></div></section>
+<section class="section catalog-section"><div class="container"><div class="catalog-top"><span>{{ courses|length }} practical courses</span><span>Learn at your own pace · Project-based</span></div><div class="course-grid catalog-grid">
+{% for course in courses %}<article class="course-card"><div class="course-art {{ course.color }}"><span class="course-symbol">{{ course.icon }}</span><span class="course-art-label">{{ course.category }}</span></div><div class="course-info"><div class="course-meta"><span>{{ course.level }}</span><span>{{ course.duration }}</span></div><h3>{{ course.title }}</h3><p>{{ course.description }}</p><div class="course-card-bottom"><span>{{ course.lessons }} lessons · {{ course.price }}</span><a href="{% url 'course_detail' course.slug %}">Details <span aria-hidden="true">↗</span></a></div></div></article>{% endfor %}
+</div></div></section>
+<section class="bottom-cta"><div class="container cta-inner"><div><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> NOT SURE WHERE TO START?</div><h2>We’ll help you<br>find your path.</h2></div><a class="button button-light" href="{% url 'contact' %}">Talk to our team <span aria-hidden="true">↗</span></a><div class="cta-spark" aria-hidden="true">✳</div></div></section>
+{% endblock %}
